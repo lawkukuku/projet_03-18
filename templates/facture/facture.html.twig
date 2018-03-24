@@ -1,0 +1,50 @@
+<html>
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center">Facture</h1>
+
+    <p><span style="font-weight: bold">Identifiant: </span> {{ user.username }} <br/> <span style="font-weight: bold">Email: </span>{{ user.email }}<br/> <span style="font-weight: bold">Date: </span>{{ date }}</p>
+
+    <table>
+
+        <tr>
+            <th>Nom de produit</th>
+            <th>quantite</th>
+            <th>Prix unitaire</th>
+            <th>Prix total</th>
+        </tr>
+        {% for produit in produits %}
+        <tr>
+
+            <td>{{ produit.nom }}</td>
+            <td>{{ produit.quantite }}</td>
+            <td>${{ produit.prix_unite }}</td>
+            <td>${{ produit.total }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    <div style="margin-left: 85%">
+        <span style="font-weight: bold;">Total: </span>${{ total }}
+    </div>
+
+</body>
+</html>

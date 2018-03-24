@@ -1,0 +1,65 @@
+$primary: blue;
+
+/*.bg{
+  background: url("bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}*/
+
+body{
+  overflow-x: hidden;
+}
+
+
+
+@font-face {
+  font-family: "conn";
+  src: url('font_1.ttf');
+}
+.conn-lab{
+  font-family: conn;
+  margin-left: auto;
+  margin-right: auto;
+  color: #FFFFFF;
+}
+
+
+
+
+.identifiant-invalide{
+  color: #5eb5e0;
+}
+
+.connection-place{
+  margin-top: 20%;
+  margin-bottom: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: conn;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+.conn-login{
+  background-color: #ececf6;
+  border-radius: 100px;
+  width: 30%;
+  margin-left: 35%;
+}
+
+@media (max-width: 576px) {
+  .connection-container{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .conn-login{
+    margin-left: 0;
+    width: 100%;
+  }
+}

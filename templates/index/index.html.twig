@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            {% for produit in produits_carousel %}
+            <div class="carousel-item {% if produit.importance == 2 %} active {% endif %}">
+                <img class="d-block w-100 img-fluid carousel-index" src="{{ asset('images/' ~ produit.image) }}" alt="First slide">
+                <div class="carousel-caption d-md-block carousel-index-produits">
+                    <h3>{{ produit.nom }}</h3>
+                    <p class="carousel-p">{{ produit.description }}</p>
+                    <a  href="/produit/{{ produit.slug }}" class="btn btn-outline-success">Voir ce produit</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <div class="row index">
+        <div class="col-md-2 gauche"></div>
+        <div class="col-md-8">
+            <h2 class="categorie-index">Categories</h2>
+            <div class="card-group">
+                {% for categorie in categories %}
+                    <div class="card  card-index">
+                        <a href="/categorie/{{ categorie.slug }}"><img class="card-img-top img-fluid" style="height: 15vh;" src="{{ asset('images/' ~ categorie.nom ~ '.jpg') }}" alt="Card image cap"></a>
+                        <div class="card-block">
+                            <h4 class="card-title">{{ categorie.nom }}</h4>
+                            <p class="card-text">{{ categorie.description }}</p>
+                            <a href="/categorie/{{ categorie.slug }}" class="btn btn-primary">Entrer</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+{% endblock %}

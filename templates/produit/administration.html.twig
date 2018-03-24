@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 bg-faded">
+            <table id="example" class="table table-striped table-bordered" style="background-color: white" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Nom</th>
+                    <th>Slug</th>
+                    <th>Prix</th>
+                    <th>Quantite</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>Image</th>
+                    <th>Nom</th>
+                    <th>Slug</th>
+                    <th>Prix</th>
+                    <th>Quantite</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                {% for produit in produits %}
+                <tr>
+                    <td><img src="{{ asset('images/' ~ produit.image) }}" style="max-height: 100px"/></td>
+                    <td>{{ produit.nom }}</td>
+                    <td>{{ produit.slug }}</td>
+                    <td>${{ produit.prix }}</td>
+                    <td>{{ produit.quantite }}</td>
+                    <td>{{ produit.description }}</td>
+                    <td><a href="/administration/modifier/{{ produit.slug }}" class="btn btn-primary">Modifier</a><br/><a href="/administration/suppr/{{ produit.slug }}" class="btn btn-danger">Supprimer</a></td>
+                </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+{% endblock %}

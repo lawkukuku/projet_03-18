@@ -1,0 +1,26 @@
+security:
+    encoders:
+            App\Entity\User:
+                algorithm: bcrypt
+    providers:
+        our_db_provider:
+                    entity:
+                        class: App\Entity\User
+    firewalls:
+
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            pattern:    ^/
+            http_basic: ~
+            provider: our_db_provider
+            anonymous: ~
+
+            form_login:
+                login_path: login
+                check_path: login
+
+            logout:
+                path:   /logout
+                target: /

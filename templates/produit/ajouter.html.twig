@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+{{ form_start(form) }}
+
+
+    <div class="row">
+        <div class="col-md-3 col-sm-1"></div>
+        <div class="col-md-6 col-sm-10 connection-container">
+
+            <h1 class="ajout-produit-place">Ajouter un nouveau produit</h1>
+            {{ form_errors(form) }}
+
+            {{ form_label(form.nom, "Nom", {'label_attr': {'class': 'conn-lab'}}) }}
+            <span style="color: red">{{ form_errors(form.nom) }}</span>
+            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+            <br/>
+
+            {{ form_label(form.slug, "Slug", {'label_attr': {'class': 'conn-lab'}}) }}
+            <span style="color: red">{{ form_errors(form.slug) }}</span>
+            {{ form_widget(form.slug, {'attr': {'class': 'form-control'}}) }}
+            <br/>
+
+            {{ form_label(form.quantite, "Quantite", {'label_attr': {'class': 'conn-lab'}}) }}
+            <span style="color: red">{{ form_errors(form.quantite) }}</span>
+            {{ form_widget(form.quantite, {'attr': {'class': 'form-control'}}) }}
+            <br/>
+
+            {{ form_label(form.prix, "Prix", {'label_attr': {'class': 'conn-lab'}}) }}
+            <span style="color: red">{{ form_errors(form.prix) }}</span>
+            {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}<br/>
+
+            {{ form_label(form.categorie, "Categorie", {'label_attr': {'class': 'conn-lab'}}) }}
+            <span style="color: red">{{ form_errors(form.categorie) }}</span>
+            {{ form_widget(form.categorie, {'attr': {'class': 'form-control'}}) }}<br/>
+
+            {{ form_label(form.image, "Image", {'label_attr': {'class': 'conn-lab'}}) }}
+            <span style="color: red">{{ form_errors(form.image) }}</span>
+            {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}<br/>
+
+            {{ form_label(form.description, "Description", {'label_attr': {'class': 'conn-lab'}}) }}
+            <span style="color: red">{{ form_errors(form.description) }}</span>
+            {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+            <br/>
+            <br/>
+
+            <button class="form-control conn-login" type="submit">Valider</button>
+            <br/>
+            <br/>
+        </div>
+    </div>
+
+{{ form_end(form) }}
+{% endblock %}

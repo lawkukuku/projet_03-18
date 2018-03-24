@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div class="container bg-faded">
+        {% for sujet in sujets %}
+        <br/>
+        <div class="card" style="">
+            <div class="card-block">
+                <h4 class="card-title">{{ sujet.titre }}</h4>
+                <p class="card-text">{{ sujet.description }}</p>
+                <div class="row">
+                    <div class="col-md-5"> par: <b>{{ sujet.user.username }} </b> le {{ sujet.date }}</div>
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"><a href="/forum/consulter/{{ sujet.slug }}" class="btn btn-primary" style="">Voir le sujet</a></div>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+
+        <a href="{{ path('login') }}" target="_blank">Open in new window</a>
+
+
+    </div>
+
+{% endblock %}

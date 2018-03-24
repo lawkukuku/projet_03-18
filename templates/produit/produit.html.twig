@@ -1,0 +1,70 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<div class="container">
+    <div class="bg-faded">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <h1 class="produit-h1">{{ produit.nom }}</h1>
+                <div class="row">
+                    <div class="col-md-7">
+                        <img class="produit-image" src="{{ asset('images/' ~ produit.image) }}">
+                    </div>
+                    <div class="col-md-5">
+                        <span class="produit-span">Quantite disponible : </span><span class="produit-span">{{ produit.quantite }}</span>
+                        <br/>
+                        {{ form_start(panier) }}
+                        {{ form_errors(panier) }}
+
+                        {{ form_label(panier.quantite, "Quantite : ", {'label_attr': {'class': 'produit-h3-normal'}}) }}
+                        <span style="color: red">{{ form_errors(panier.quantite) }}</span>
+                        {{ form_widget(panier.quantite, {'attr': {'class': 'form-control', 'value': '1'}}) }}
+                        <br/>
+                        <button class="form-control" type="submit">Ajouter au panier</button>
+                        {{ form_end(panier) }}
+                        <br/>
+                        <span class="produit-h3-normal">Prix : </span><span class="produit-span">${{ produit.prix }}</span>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <h3 class="produit-h3">Description du produit</h3>
+                <p class="produit-p">{{ produit.description }}</p>
+                <br/>
+                {% for commentaire in commentaires_sous %}
+                    <ol class="breadcrumb">
+                        <img src="{% if commentaire[0].user.image == "" %}{{ asset('images/photo.jpg') }}{% else %}{{ asset('images/' ~ commentaire[0].user.image) }}{% endif %}" style="height: 30px; border-radius: 30px" /><b>{{ commentaire[0].user.username }}: </b> le {{ commentaire[0].date }}<p>{{ commentaire[0].contenue }}</p>
+                    </ol>
+                    <div style="margin-left: 60px">
+                        {% for sous in commentaire[2] %}
+                            <ol class="breadcrumb">
+                                <img src="{% if sous.user.image == "" %}{{ asset('images/photo.jpg') }}{% else %}{{ asset('images/' ~ sous.user.image) }}{% endif %}" style="height: 30px; border-radius: 30px" /><b>{{ sous.user.username }}: </b> le {{ sous.date }}<p>{{ sous.contenue }}</p>
+                            </ol>
+                        {% endfor %}
+
+                        {{ form_start(commentaire[1]) }}
+                        <span style="color: red">{{ form_errors(commentaire[1].contenue_sous) }}</span>
+                        {{ form_widget(commentaire[1].contenue_sous, {'attr': {'class': 'form-control', 'placeholder': 'repondre ...'}}) }}
+                        {{ form_end(commentaire[1]) }}
+                    </div>
+                    <br/>
+                {% endfor %}
+
+
+                {{ form_start(form) }}
+
+
+                <span style="color: red">{{ form_errors(form.contenue) }}</span>
+                {{ form_widget(form.contenue, {'attr': {'class': 'form-control'}}) }}
+
+                <button class="form-control" type="submit">Commenter</button>
+
+                {{ form_end(form) }}
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

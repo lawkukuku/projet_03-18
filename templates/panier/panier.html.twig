@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+    <h1 class="produit-h1">Panier</h1>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 bg-faded">
+            <div class="row">
+                {% for produit in produits %}
+                    <div class="col-lg-4 col-md-6 col-sm-6 card-index">
+                        <div class="card">
+                            <a href="/produit/{{ produit.produit.slug }}"><img style="max-width: 100%" href="/produit/{{ produit.produit.slug }}" class="card-img-top" src="{{ asset('images/' ~ produit.produit.image) }}" alt="Card image cap"></a>
+                            <div class="card-block">
+                                <h4 class="card-title" style="text-align: center">{{ produit.produit.nom }}</h4>
+                                <br/>
+                                {{ form_start(produit.quantite) }}
+                                {{ form_errors(produit.quantite) }}
+
+                                {{ form_label(produit.quantite.quantite, "Quantite : ", {'label_attr': {'class': 'produit-h3-normal'}}) }}
+                                <span style="color: red">{{ form_errors(produit.quantite.quantite) }}</span>
+                                {{ form_widget(produit.quantite.quantite, {'attr': {'class': 'form-control'}}) }}
+                                <br/>
+                                <button class="form-control" type="submit">Actualiser</button>
+                                {{ form_end(produit.quantite) }}
+                                {{ form_start(produit.suppr) }}
+                                {{ form_errors(produit.suppr) }}
+                                <button class="form-control badge-warning" style="color: white" type="submit">supprimer</button>
+                                {{ form_end(produit.suppr) }}
+                                <span class="produit-h3-normal" style="margin-left: 30%">Prix : </span><span class="produit-span">${{ produit.produit.prix }}</span>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if ver == true %}
+            {{ form_start(facture) }}
+            {{ form_errors(facture) }}
+                <input type="hidden" name="panier" value="/panier" />
+            <button class="form-control badge-success" style="text-align: center; color: white" type="submit">Acheter</button>
+            {{ form_end(facture) }}
+                {% endif %}
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+{% endblock %}

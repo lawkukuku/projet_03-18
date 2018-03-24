@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div class="container bg-faded">
+        {{ form_start(form) }}
+
+
+        <div class="row">
+            <div class="col-md-1 col-sm-1"></div>
+            <div class="col-md-10 col-sm-10 connection-container">
+
+                <h1 class="ajout-produit-place" style="color: #1d1e1f">Ajouter un sujet</h1>
+                {{ form_errors(form) }}
+
+                {{ form_label(form.titre, "Titre", {'label_attr': {'class': 'conn-lab', 'style': 'color: #1d1e1f'}}) }}
+                <span style="color: red">{{ form_errors(form.titre) }}</span>
+                {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+                <br/>
+
+                {{ form_label(form.description, "Description", {'label_attr': {'class': 'conn-lab', 'style': 'color: #1d1e1f'}}) }}
+                <span style="color: red">{{ form_errors(form.description) }}</span>
+                {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                <br/>
+                <br/>
+
+                <button class="form-control conn-login" type="submit">Valider</button>
+                <br/>
+                <br/>
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

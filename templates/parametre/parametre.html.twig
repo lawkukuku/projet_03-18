@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div class="container bg-faded">
+        <h1 class="produit-h1">Parametre</h1>
+        <div style="margin-top: 60px"></div>
+
+        {{ form_start(image) }}
+        <div class="row" style="margin-top: 30px">
+
+            <div class="col-md-5 col-sm-5 col-xs-5"><h3 class="param">Image: </h3></div>
+            <div class="col-md-5 col-sm-5 col-xs-5"><img src="{{ asset('images/' ~ img) }}" class="img-fluid">{{ form_widget(image.image, {'attr': {'class': 'form-control', 'placeholder': ''}}) }}</div>
+            <div class="col-md-2 col-sm-2 col-xs-2"><button type="submit" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">Modifier</button></div>
+
+        </div>
+        {{ form_end(image) }}
+
+        {{ form_start(identifiant) }}
+        <div class="row" style="margin-top: 30px">
+
+            <div class="col-md-5 col-sm-5 col-xs-5"><h3 class="param">Identifiant: </h3></div>
+            <div class="col-md-5 col-sm-5 col-xs-5">{{ form_widget(identifiant.identifiant, {'attr': {'class': 'form-control'}}) }}</div>
+            <div class="col-md-2 col-sm-2 col-xs-2"><button type="submit" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">Modifier</button></div>
+
+        </div>
+        {{ form_end(identifiant) }}
+        {{ form_start(email) }}
+        <div class="row" style="margin-top: 30px">
+
+            <div class="col-md-5 col-sm-5 col-xs-5"><h3 class="param">Email: </h3></div>
+            <div class="col-md-5 col-sm-5 col-xs-5">{{ form_widget(email.email, {'attr': {'class': 'form-control'}}) }}</div>
+            <div class="col-md-2 col-sm-2 col-xs-2"><button type="submit" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">Modifier</button></div>
+
+        </div>
+        {{ form_end(email) }}
+
+        {{ form_start(pass) }}
+        <div class="row" style="margin-top: 30px">
+
+            <div class="col-md-5 col-sm-5 col-xs-5"><h3 class="param">Mot de passe: </h3></div>
+            <div class="col-md-5 col-sm-5 col-xs-5">{{ form_widget(pass.mot_de_passe, {'attr': {'class': 'form-control', 'placeholder': '********'}}) }}</div>
+            <div class="col-md-2 col-sm-2 col-xs-2"><button type="submit" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">Modifier</button></div>
+
+        </div>
+        {{ form_end(pass) }}
+
+    </div>
+
+{% endblock %}
